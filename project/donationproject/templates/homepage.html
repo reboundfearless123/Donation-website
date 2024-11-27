@@ -1,0 +1,777 @@
+<html lang="en" class="hydrated"><head>
+    <meta charset="UTF-8"><style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFE ON LAND</title>
+  
+    <!-- 
+      - favicon
+    -->
+    <link rel="shortcut icon" href="C:\Users\hp5cd\Downloads\icons8-field-30.png" type="">
+  
+    <!-- 0
+      - custom css link
+    -->
+    <link rel="stylesheet" href="{{url_for('static',filename='homepage.css')}}">
+  
+    <!-- 
+      - google font link
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Roboto:wght@300;400;500;700&amp;family=Oswald:wght@600&amp;display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+  
+    <!-- 
+      - #HEADER
+    -->
+  
+    <header class="header" data-header="">
+      <div class="container">
+  
+        <h1>
+          <a href="#" class="logo">SUSTAINAIBLY MANAGE FOREST</a>
+        </h1>
+  
+        <select name="language" class="lang-switch">
+  
+          <option value="english">English</option>
+          <option value="french">French</option>
+          <option value="spanish">Spanish</option>
+  
+        </select>
+  
+        <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn="">
+          <ion-icon name="menu-outline" role="img" class="md hydrated" aria-label="menu outline"></ion-icon>
+        </button>
+  
+        <nav class="navbar" data-navbar="">
+  
+          <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn="">
+            <ion-icon name="close-outline" role="img" class="md hydrated" aria-label="close outline"></ion-icon>
+          </button>
+  
+          <a href="#" class="logo">SMF</a>
+  
+          <ul class="navbar-list">
+  
+            <li>
+              <a href="#home" class="navbar-link" data-nav-link="">
+                <span>Home</span>
+  
+                <ion-icon name="chevron-forward-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+              </a>
+            </li>
+  
+            <li>
+              <a href="#about" class="navbar-link" data-nav-link="">
+                <span>About</span>
+  
+                <ion-icon name="chevron-forward-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+              </a>
+            </li>
+  
+            <li>
+              <a href="#service" class="navbar-link" data-nav-link="">
+                <span>Service</span>
+  
+                <ion-icon name="chevron-forward-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+              </a>
+            </li>
+  
+            <li>
+              <a href="{{url_for('account')}}" class="navbar-link" data-nav-link="">
+                <span>Account</span>
+  
+                <ion-icon name="chevron-forward-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+              </a>
+            </li>
+  
+            <li>
+              <a href="{{url_for('new_event')}}" class="navbar-link" data-nav-link="">
+                <span>Event</span>
+  
+                <ion-icon name="chevron-forward-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+              </a>
+            </li>
+  
+            <li>
+              <a href="#" class="navbar-link" data-nav-link="">
+                <span>Contact</span>
+  
+                <ion-icon name="chevron-forward-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+              </a>
+            </li>
+  
+          </ul>
+  
+        </nav>
+  
+        <div class="header-action">
+  
+          <button class="search-btn" aria-label="Search">
+            <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
+          </button>
+          {%if current_user.is_authenticated%}
+          <a href="{{url_for('logout')}}"><button class="btn btn-primary">    
+            Logout
+            <ion-icon name="heart-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+          </button></div></a>
+          {%else%}
+          <a href="{{url_for('register')}}"><button class="btn btn-primary">    
+            Register
+            <ion-icon name="heart-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+          </button></div></a>
+          <a href="{{url_for('login')}}"><button class="btn btn-primary">    
+            Login
+            <ion-icon name="heart-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+          </button></div></a>
+          {%endif%}
+  
+        </div>
+  
+      </div>
+    </header>
+  
+  
+    {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+  
+  
+    <main>
+      <article>
+  
+        <!-- 
+          - #HERO
+        -->
+  
+        <section class="hero" id="home">
+          <div class="container">
+  
+            <p class="section-subtitle">
+              <img src="https://images.unsplash.com/photo-1706871706925-7e1a45bcf501?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="32" height="7" alt="Wavy line">
+  
+              <span>Welcome to our donation website</span>
+            </p>
+  
+            <h2 class="h1 hero-title">
+            SustainWood:<strong> Empowering Forest Conservation Through Donations</strong>
+            </h2>
+  
+            <p class="hero-text">
+              Sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+              suspendisse
+              ultrices gravida.
+            </p>
+  
+            <a href="https://buy.stripe.com/test_fZe9EHcyNcUVaA0cMM">  <button class="btn btn-primary">
+            
+              <span>Donation</span>
+  
+              <ion-icon name="heart-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+            </button></a>
+  
+          </div>
+        </section>
+  
+  
+  
+  
+  
+        <!-- 
+          - #FEATURES
+        -->
+  
+        <section class="section features">
+          <div class="container">
+  
+            <ul class="features-list">
+  
+              <li class="features-item">
+                <div class="item-icon">
+                  <ion-icon name="shield-checkmark-outline" role="img" class="md hydrated" aria-label="shield checkmark outline"></ion-icon>
+                </div>
+  
+                <div>
+                  <h3 class="h4 item-title">Safe Forest</h3>
+  
+                  <p class="item-text">
+                    Sit amet consecte adiscine
+                    eiusm temor ultrices.
+                  </p>
+                </div>
+              </li>
+  
+              <li class="features-item">
+                <div class="item-icon">
+                  <ion-icon name="water-outline" role="img" class="md hydrated" aria-label="water outline"></ion-icon>
+                </div>
+  
+                <div>
+                  <h3 class="h4 item-title">Safe Water</h3>
+  
+                  <p class="item-text">
+                    Sit amet consecte adiscine
+                    eiusm temor ultrices.
+                  </p>
+                </div>
+              </li>
+  
+              <li class="features-item">
+                <div class="item-icon">
+                  <ion-icon name="leaf-outline" role="img" class="md hydrated" aria-label="leaf outline"></ion-icon>
+                </div>
+  
+                <div>
+                  <h3 class="h4 item-title">Ecology Save</h3>
+  
+                  <p class="item-text">
+                    Sit amet consecte adiscine
+                    eiusm temor ultrices.
+                  </p>
+                </div>
+              </li>
+  
+              <li class="features-item">
+                <div class="item-icon">
+                  <ion-icon name="snow-outline" role="img" class="md hydrated" aria-label="snow outline"></ion-icon>
+                </div>
+  
+                <div>
+                  <h3 class="h4 item-title">Environment</h3>
+  
+                  <p class="item-text">
+                    Sit amet consecte adiscine
+                    eiusm temor ultrices.
+                  </p>
+                </div>
+              </li>
+  
+            </ul>
+  
+          </div>
+        </section>
+  
+  
+  
+  
+  
+        <!-- 
+          - #ABOUT
+        -->
+  
+        <section class="section about" id="about">
+          <div class="container">
+  
+            <div class="about-banner">
+  
+              <h2 class="deco-title">About Us</h2>
+  
+              <img src="./assets/images/deco-img.png" width="58" height="261" alt="" class="deco-img">
+  
+              <div class="banner-row">
+  
+                <div class="banner-col">
+                  <img src="https://images.unsplash.com/photo-1493599124325-e628361046af?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3VzdGFpbmFibHklMjBtYW5hZ2UlMjBmb3Jlc3RzfGVufDB8fDB8fHww" width="315" height="380" loading="lazy" alt="" class="about-img w-100">
+  
+                  <img src="https://images.unsplash.com/photo-1541717048531-8387d2945b1b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHN1c3RhaW5hYmx5JTIwbWFuYWdlJTIwZm9yZXN0c3xlbnwwfHwwfHx8MA%3D%3D" width="386" height="250" loading="lazy" alt="" class="about-img about-img-2 w-100">
+                </div>
+  
+                <div class="banner-col">
+                  <img src="https://images.unsplash.com/photo-1534970028765-38ce47ef7d8d?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="250" height="277" loading="lazy" alt="" class="about-img about-img-3 w-100">
+  
+                  <img src="https://images.unsplash.com/photo-1623429149913-8f0eab9227a2?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fHN1c3RhaW5hYmx5JTIwbWFuYWdlJTIwZm9yZXN0c3xlbnwwfHwwfHx8MA%3D%3D" width="315" height="380" loading="lazy" alt="" class="about-img w-100">
+                </div>
+  
+              </div>
+  
+            </div>
+  
+            <div class="about-content">
+  
+              <p class="section-subtitle">
+                <img src="./assets/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+  
+                <span>Why Choose Us</span>
+              </p>
+  
+              <h2 class="h2 section-title">
+                Rise Your Hand to contribute to  <strong>Life on Land</strong>
+              </h2>
+  
+              <ul class="tab-nav">
+  
+                <li>
+                  <button class="tab-btn active">Our Mission</button>
+                </li>
+  
+                <li>
+                  <button class="tab-btn">Our Vision</button>
+                </li>
+  
+                <li>
+                  <button class="tab-btn">Next Plan</button>
+                </li>
+  
+              </ul>
+  
+              <div class="tab-content">
+  
+                <p class="section-text">
+                    Our platform supports verified projects that have a tangible and positive impact on forests, such as reforestation, habitat preservation, and sustainable forestry practices.
+                </p>
+  
+                <ul class="tab-list">
+  
+                  <li class="tab-item">
+                    <div class="item-icon">
+                      <ion-icon name="checkmark-circle" role="img" class="md hydrated" aria-label="checkmark circle"></ion-icon>
+                    </div>
+  
+                    <p class="tab-text">Charity For plants</p>
+                  </li>
+  
+                  <li class="tab-item">
+                    <div class="item-icon">
+                      <ion-icon name="checkmark-circle" role="img" class="md hydrated" aria-label="checkmark circle"></ion-icon>
+                    </div>
+  
+                    <p class="tab-text">Charity For Nature conservancy</p>
+                  </li>
+  
+                  <li class="tab-item">
+                    <div class="item-icon">
+                      <ion-icon name="checkmark-circle" role="img" class="md hydrated" aria-label="checkmark circle"></ion-icon>
+                    </div>
+  
+                    <p class="tab-text">Charity For Water</p>
+                  </li>
+  
+                  
+  
+                </ul>
+  
+                <button class="btn btn-secondary">
+                  <span>Learn More Us</span>
+  
+                  <ion-icon name="heart-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                </button>
+  
+              </div>
+  
+            </div>
+  
+          </div>
+        </section>
+
+        <!-- 
+          - #SERVICE
+        -->
+  
+        <section class="section service" id="service" style="background-image: url('./assets/images/service-map.png')">
+          <div class="container">
+  
+            <p class="section-subtitle">
+              <img src="./assets/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+  
+              <span>What We Do</span>
+            </p>
+  
+            <h2 class="h2 section-title">
+              We Work Differently to <strong>Revolutionizing Forest Conservation</strong>
+            </h2>
+  
+            <ul class="service-list">
+  
+              <li>
+                <div class="service-card">
+  
+                  <div class="card-icon">
+                    <ion-icon name="leaf-outline" role="img" class="md hydrated" aria-label="leaf outline"></ion-icon>
+                  </div>
+  
+                  <h3 class="h3 card-title">Save Nature</h3>
+  
+                  <p class="card-text">
+                    Tempor incididunt ut labores
+                    dolore magna suspene
+                  </p>
+  
+                  <a href="#" class="btn-link">
+                    <span>Read More</span>
+  
+                    <ion-icon name="arrow-forward" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                  </a>
+  
+                </div>
+              </li>
+  
+              <li>
+                <div class="service-card">
+  
+                  <div class="card-icon">
+                    <ion-icon name="earth-outline" role="img" class="md hydrated" aria-label="earth outline"></ion-icon>
+                  </div>
+  
+                  <h3 class="h3 card-title">Save Ecology</h3>
+  
+                  <p class="card-text">
+                    Tempor incididunt ut labores
+                    dolore magna suspene
+                  </p>
+  
+                  <a href="#" class="btn-link">
+                    <span>Read More</span>
+  
+                    <ion-icon name="arrow-forward" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                  </a>
+  
+                </div>
+              </li>
+  
+              <li>
+                <div class="service-card">
+  
+                  <div class="card-icon">
+                    <ion-icon name="flower-outline" role="img" class="md hydrated" aria-label="flower outline"></ion-icon>
+                  </div>
+  
+                  <h3 class="h3 card-title">Tree Plantation</h3>
+  
+                  <p class="card-text">
+                    Tempor incididunt ut labores
+                    dolore magna suspene
+                  </p>
+  
+                  <a href="#" class="btn-link">
+                    <span>Read More</span>
+  
+                    <ion-icon name="arrow-forward" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                  </a>
+  
+                </div>
+              </li>
+  
+              <li>
+                <div class="service-card">
+  
+                  <div class="card-icon">
+                    <ion-icon name="boat-outline" role="img" class="md hydrated" aria-label="boat outline"></ion-icon>
+                  </div>
+  
+                  <h3 class="h3 card-title">Save Water</h3>
+  
+                  <p class="card-text">
+                    Tempor incididunt ut labores
+                    dolore magna suspene
+                  </p>
+  
+                  <a href="#" class="btn-link">
+                    <span>Read More</span>
+  
+                    <ion-icon name="arrow-forward" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                  </a>
+  
+                </div>
+              </li>
+  
+            </ul>
+  
+          </div>
+        </section>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+        <!-- 
+          - #TESTIMONIALS
+        -->
+  
+        <section class="testi">
+  
+          <div class="testi-content">
+  
+            <p class="section-subtitle">
+              <img src="./assets/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+  
+              <span>Our Testimonials</span>
+            </p>
+  
+            <h2 class="h2 section-title">
+              What People Say About <strong>Our Organization</strong>
+            </h2>
+  
+            <div class="testi-card">
+  
+              <figure class="card-avatar">
+                <img src="./assets/images/testi-avatar.png" width="60" height="60" loading="lazy" alt="David S. Neuman">
+              </figure>
+  
+              <div>
+                <blockquote class="testi-text">
+                  Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium totam rem
+                  aperiam eaquesa
+                  quae abillo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo enimpsam voluptatem
+                </blockquote>
+  
+                <h3 class="testi-name">David S. Neuman</h3>
+  
+                <p class="testi-title">Business Manager</p>
+              </div>
+  
+            </div>
+  
+          </div>
+  
+          <figure class="testi-banner">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="960" height="846" loading="lazy" alt="Rhinoceros" class="img-cover">
+          </figure>
+  
+        </section>
+  
+  
+  
+  
+  
+        <!-- 
+          - #PARTNER
+        -->
+  
+        <section class="section partner">
+          <div class="container">
+  
+            <a href="#" class="partner-logo">
+              <img src="https://plus.unsplash.com/premium_photo-1669741908175-eb029fbc350f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zm9yZXN0fGVufDB8fDB8fHww" width="157" height="55" loading="lazy" alt="Forest" class="gray">
+  
+              <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9yZXN0fGVufDB8fDB8fHww" width="157" height="55" loading="lazy" alt="" class="color">
+            </a>
+  
+            <a href="#" class="partner-logo">
+              <img src="https://images.unsplash.com/photo-1542202229-7d93c33f5d07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D" width="163" height="55" loading="lazy" alt="Non Profit Agency" class="gray">
+  
+              <img src="https://images.unsplash.com/photo-1542202229-7d93c33f5d07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D" width="163" height="55" loading="lazy" alt="Non Profit Agency" class="color">
+            </a>
+  
+            <a href="#" class="partner-logo">
+              <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D" width="149" height="55" loading="lazy" alt="Rise Hand Help Us" class="gray">
+  
+              <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D" width="149" height="55" loading="lazy" alt="Rise Hand Help Us" class="color">
+            </a>
+  
+            <a href="#" class="partner-logo">
+              <img src="https://images.unsplash.com/photo-1534269222346-5a896154c41d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D" width="169" height="58" loading="lazy" alt="Helping" class="gray">
+  
+              <img src="https://images.unsplash.com/photo-1534269222346-5a896154c41d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D" width="169" height="58" loading="lazy" alt="Helping" class="color">
+            </a>
+  
+            <a href="#" class="partner-logo">
+              <img src="https://images.unsplash.com/photo-1503242464786-199ffb1dd8d9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D" width="211" height="55" loading="lazy" alt="Poor Fund Organization" class="gray">
+  
+              <img src="https://images.unsplash.com/photo-1503242464786-199ffb1dd8d9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGZvcmVzdHxlbnwwfHwwfHx8MA%3D%3D" width="211" height="55" loading="lazy" alt="Poor Fund Organization" class="color">
+            </a>
+  
+          </div>
+        </section>
+  
+  
+  
+  
+  
+        <!-- 
+          - #EVENT
+        -->
+  
+        <section class="section event" id="event">
+          <div class="container">
+      
+              <p class="section-subtitle">
+                  <img src="./assets/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+      
+                  <span>Event &amp; Program</span>
+      
+                  <img src="./assets/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+              </p>
+      
+              <h2 class="h2 section-title">
+                  Our Most Popular Causes For <strong>Building Fund</strong>
+              </h2>
+      
+              <ul class="event-list">
+                  {% for event in events.items %}
+                  <li>
+                      <div class="event-card">
+      
+                          <time class="card-time" datetime="{{ event.creation_date.strftime('%m-%d') }}">
+                              <span class="month">{{ event.creation_date.strftime('%b') }}</span>
+      
+                              <span class="date">{{ event.creation_date.strftime('%d') }}</span>
+                          </time>
+      
+                          <div class="wrapper">
+      
+                              <div class="card-content">
+                                  <p class="card-subtitle">{{ event.organization }}</p>
+                                      
+                                 <h3 class="card-title">{{ event.title }}</h3>
+
+                              <p class="card-text">{{ event.description }}</p>
+                              </div>
+      
+                              <a href="{{ url_for('event_page', event_id=event.id) }}"><button class="btn btn-white">
+                                  <span>View Events</span>
+                                  <ion-icon name="arrow-forward" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                              </button></a>
+      
+                          </div>
+      
+                      </div>
+                    </li>
+                    {% endfor %}
+                    </ul>
+                    
+                    <!-- Styling for page numbers -->
+                    <div class="pagination">
+                        {% for page_num in events.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
+                            {% if page_num %}
+                               {% if events.page == page_num %}
+                                <a class="page-current" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+                                {% else %}
+                                <a class="page-link" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+                                {% endif %}
+                            {% else %}
+                                <span class="dots">...</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    
+      
+              <button class="btn btn-secondary">
+                  <span>Learn More Us</span>
+                  <ion-icon name="heart-outline" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+              </button>
+      
+          </div>
+      </section>
+      
+  
+  
+  
+        <!-- 
+          - #INSTA POST
+        -->
+  
+        <section class="insta-post">
+  
+          <ul class="insta-post-list">
+  
+            <li class="insta-post-item">
+              <a href="#" class="insta-post-link">
+                <img src="./assets/images/insta-1.jpg" width="320" height="300" loading="lazy" alt="Lion" class="img-cover">
+  
+                <ion-icon name="logo-instagram" role="img" class="md hydrated" aria-label="logo instagram"></ion-icon>
+              </a>
+            </li>
+  
+            <li class="insta-post-item">
+              <a href="#" class="insta-post-link">
+                <img src="./assets/images/insta-2.jpg" width="320" height="300" loading="lazy" alt="Deer" class="img-cover">
+  
+                <ion-icon name="logo-instagram" role="img" class="md hydrated" aria-label="logo instagram"></ion-icon>
+              </a>
+            </li>
+  
+            <li class="insta-post-item">
+              <a href="#" class="insta-post-link">
+                <img src="./assets/images/insta-3.jpg" width="320" height="300" loading="lazy" alt="Wild Bear" class="img-cover">
+  
+                <ion-icon name="logo-instagram" role="img" class="md hydrated" aria-label="logo instagram"></ion-icon>
+              </a>
+            </li>
+  
+            <li class="insta-post-item">
+              <a href="#" class="insta-post-link">
+                <img src="./assets/images/insta-4.jpg" width="320" height="300" loading="lazy" alt="Deer" class="img-cover">
+  
+                <ion-icon name="logo-instagram" role="img" class="md hydrated" aria-label="logo instagram"></ion-icon>
+              </a>
+            </li>
+  
+            <li class="insta-post-item">
+              <a href="#" class="insta-post-link">
+                <img src="./assets/images/insta-5.jpg" width="320" height="300" loading="lazy" alt="Horses" class="img-cover">
+  
+                <ion-icon name="logo-instagram" role="img" class="md hydrated" aria-label="logo instagram"></ion-icon>
+              </a>
+            </li>
+  
+          </ul>
+  
+        </section>
+  
+      </article>
+    </main>
+  
+  
+  
+  
+  
+    <!-- 
+      - #FOOTER
+    -->
+  
+    <footer class="footer">
+      <div class="container">
+  
+        <ul class="footer-list">
+  
+          <li>
+            <a href="#" class="footer-link">Terms of use</a>
+          </li>
+  
+          <li>
+            <a href="#" class="footer-link">Privacy &amp; Policy</a>
+          </li>
+  
+        </ul>
+  
+        <p class="copyright">
+          Copyright 2024 <a href="#" class="copyright-link">codersss</a>. All Rights Reserved.
+        </p>
+  
+      </div>
+    </footer>
+  
+  
+  
+  
+  
+    <!-- 
+      - custom js link
+    -->
+    <script src="{{url_for('static',filename='hp.js')}}"></script>
+  
+    <!-- 
+      - ionicon link
+    -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+  
+  
+  </body></html>
